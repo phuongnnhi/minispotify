@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Controller from "./component/Controller";
+import "./App.css"
+import TrackList from "./component/TrackList";
+import { MusicPlayerProvider } from "./contexts/MusicPlayerContext";
+import MusicAppBar from "./component/MusicAppBar";
+import { Box } from "@mui/material";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MusicPlayerProvider>
+      <div className="container">
+        <MusicAppBar/>
+        <Box sx={{
+        width: "100%", // Ensures the Box spans the full width of the viewport
+        display: "flex",
+        justifyContent: "center", // Centers the Card horizontally
+        // backgroundColor: "#f8f8f8",
+      }}>
+        <div style={{maxWidth: "1200px", width:"100%"}}>
+        <h1 style={{ color: "white", fontSize: "40px", marginBottom: "10px" }}>
+    Christmas List{" "}
+    <span style={{ fontSize: "50px" }}>&#127876;</span>
+  </h1></div></Box>
+        <TrackList />
+        <Controller />
+      </div>
+    </MusicPlayerProvider>
   );
-}
+};
 
 export default App;
